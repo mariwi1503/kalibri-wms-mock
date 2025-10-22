@@ -76,39 +76,6 @@ export default function LoginPage() {
           </p>
         </div>
 
-        {/* Quick Login Demo Users */}
-        <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4 text-center">
-            Quick Login Demo
-          </h3>
-          <div className="grid grid-cols-2 gap-3">
-            {demoUsers.map((user, index) => (
-              <button
-                key={index}
-                onClick={() => quickLogin(user.email, user.type)}
-                className="p-3 rounded-xl border-2 border-gray-200 hover:border-blue-300 hover:bg-blue-50 transition-all duration-200 text-left group"
-              >
-                <div className="flex items-center space-x-3">
-                  <div className={`w-10 h-10 bg-linear-to-br ${user.color} rounded-lg flex items-center justify-center`}>
-                    <user.icon className="w-5 h-5 text-white" />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <p className="text-sm font-medium text-gray-900 truncate">
-                      {user.name}
-                    </p>
-                    <p className="text-xs text-gray-500 capitalize">
-                      {user.type === 'admin' ? 'Pemilik' : 'Penyewa'}
-                    </p>
-                  </div>
-                </div>
-              </button>
-            ))}
-          </div>
-          <p className="text-xs text-gray-500 text-center mt-3">
-            Klik salah satu untuk login
-          </p>
-        </div>
-
         {/* Login Form */}
         <div className="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
@@ -212,6 +179,39 @@ export default function LoginPage() {
               <Link href="/register">Daftar sekarang</Link>
             </p>
           </div>
+        </div>
+
+        {/* Quick Login Demo Users */}
+        <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
+          <h3 className="text-lg font-semibold text-gray-900 mb-4 text-center">
+            Pilih akun demo untuk login:
+          </h3>
+          <div className="grid grid-cols-2 gap-3">
+            {demoUsers.map((user, index) => (
+              <button
+                key={index}
+                onClick={() => quickLogin(user.email, user.type)}
+                className="p-3 rounded-xl border-2 border-gray-200 hover:border-blue-300 hover:bg-blue-50 transition-all duration-200 text-left group"
+              >
+                <div className="flex items-center space-x-3">
+                  <div className={`w-10 h-10 bg-linear-to-br ${user.color} rounded-lg flex items-center justify-center`}>
+                    <user.icon className="w-5 h-5 text-white" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm font-medium text-gray-900 truncate">
+                      {user.name}
+                    </p>
+                    <p className="text-xs text-gray-500 capitalize">
+                      {user.type === 'admin' ? 'Pemilik' : 'Penyewa'}
+                    </p>
+                  </div>
+                </div>
+              </button>
+            ))}
+          </div>
+          {/* <p className="text-xs text-gray-500 text-center mt-3">
+            Klik salah satu untuk login
+          </p> */}
         </div>
 
         {/* Back to Home */}

@@ -17,10 +17,7 @@ export async function POST(request: NextRequest) {
       return Response.json({ error: "Invalid credentials" }, { status: 401 });
     }
 
-    // For demo purposes, allow quick login with dummy password
-    let isValidPassword = password === user.password
-
-    if (!isValidPassword) {
+    if (password !== user.password) {
       return Response.json({ error: "Invalid credentials" }, { status: 401 });
     }
     

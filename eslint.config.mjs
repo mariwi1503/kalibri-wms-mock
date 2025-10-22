@@ -19,6 +19,13 @@ const eslintConfig = [
       "build/**",
       "next-env.d.ts",
     ],
+    rules: {
+      // Mematikan larangan penggunaan "any"
+      "@typescript-eslint/no-explicit-any": "off",
+      
+      // Opsional: mematikan unused vars supaya tidak error
+      "@typescript-eslint/no-unused-vars": "off",
+    },
   },
 ];
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { Home, Wrench } from "lucide-react";
+import { Wrench, ArrowLeftIcon } from "lucide-react";
 
 /**
  * Komponen halaman placeholder untuk fitur yang masih dalam pengembangan.
@@ -29,9 +29,9 @@ export default function NotFoundPage() {
         {/* Tombol kembali ke halaman sebelumnya */}
         <button
           onClick={() => router.back()}
-          className="inline-flex items-center space-x-2 bg-linear-to-r from-blue-600 to-green-600 text-white px-8 py-4 rounded-xl font-semibold hover:from-blue-700 hover:to-green-700 transition-all duration-200 shadow-lg hover:shadow-xl"
+          className="inline-flex items-center space-x-2 bg-linear-to-r from-blue-600 to-green-600 text-white px-8 py-4 rounded-xl font-semibold hover:from-blue-700 hover:to-green-700 transition-all duration-200 shadow-lg hover:shadow-xl cursor-pointer"
         >
-          <Home className="w-5 h-5" />
+          <ArrowLeftIcon className="w-5 h-5" />
           <span>Kembali</span>
         </button>
       </div>

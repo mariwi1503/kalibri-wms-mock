@@ -85,7 +85,7 @@ export default function Sidebar({ user, onLogout }: Props) {
             onClick={() => setIsCollapsed(!isCollapsed)}
             className="p-2 rounded-lg hover:bg-gray-100 transition-colors"
           >
-            {isCollapsed ? <Menu className="w-5 h-5" /> : <X className="w-5 h-5" />}
+            {isCollapsed ? <Menu className="text-blue-400 w-5 h-5" /> : <X className="w-5 h-5" />}
           </button>
         </div>
 
@@ -146,7 +146,7 @@ export default function Sidebar({ user, onLogout }: Props) {
         onClick={() => setIsCollapsed(false)}
         className="fixed top-4 left-4 z-30 lg:hidden bg-white p-2 rounded-lg shadow-md border border-gray-200"
       >
-        <Menu className="w-5 h-5" />
+        <Menu className="text-blue-400 w-5 h-5" />
       </button>
     </>
   );

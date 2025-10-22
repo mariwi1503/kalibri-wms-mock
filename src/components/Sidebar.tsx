@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import { IUser } from "@/interface";
 import Image from "next/image";
+import Link from "next/link";
 
 interface Props {
   user: IUser;
@@ -114,7 +115,7 @@ export default function Sidebar({ user, onLogout }: Props) {
           <ul className="space-y-2">
             {menuItems.map((item, index) => (
               <li key={index}>
-                <a
+                <Link
                   href={item.href}
                   className={`flex items-center space-x-3 px-3 py-2 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors group ${
                     isCollapsed ? "justify-center" : ""
@@ -122,7 +123,7 @@ export default function Sidebar({ user, onLogout }: Props) {
                 >
                   <item.icon className="w-5 h-5 shrink-0" />
                   {!isCollapsed && <span className="font-medium">{item.label}</span>}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>

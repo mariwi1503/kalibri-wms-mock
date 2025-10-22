@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Menu, X, Warehouse, User, LogIn } from "lucide-react";
 import { UnderDevelopmentModal } from "./UnderDevelopmentModal";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -14,7 +15,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <a href="/" className="flex items-center space-x-3">
+          <Link href="/" className="flex items-center space-x-3">
             <div className="w-10 h-10 rounded-lg flex items-center justify-center">
               {/* <Warehouse className="w-6 h-6 text-white" /> */}
               <Image
@@ -28,34 +29,34 @@ export default function Navbar() {
             <span className="text-xl font-bold text-blue-400">
               Kalibri Warehouse
             </span>
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8 ">
-            <a
+            <Link
               href="/"
               className="text-blue-400 hover:text-blue-600 font-medium transition-colors"
             >
               Beranda
-            </a>
-            {/* <a
+            </Link>
+            {/* <Link
               href="/warehouses"
               className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
             >
               Cari Gudang
-            </a>
-            <a
+            </Link>
+            <Link
               href="/about"
               className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
             >
               Tentang Kami
-            </a>
-            <a
+            </Link>
+            <Link
               href="/contact"
               className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
             >
               Kontak
-            </a> */}
+            </Link> */}
             <button
               onClick={() => setIsUnderDevelopment(true)}
               className="text-blue-400 hover:text-blue-600 font-medium transition-colors cursor-pointer"
@@ -78,19 +79,19 @@ export default function Navbar() {
 
           {/* Desktop Auth Buttons */}
           <div className="hidden md:flex items-center space-x-4">
-            <a
+            <Link
               href="/login"
               className="flex items-center space-x-2 text-blue-400 hover:text-blue-600 font-medium transition-colors"
             >
               <LogIn className="w-4 h-4" />
               <span>Masuk</span>
-            </a>
-            <a
+            </Link>
+            <Link
               href="/register"
               className="bg-linear-to-r from-blue-500 to-green-500 text-white px-6 py-2 rounded-lg font-medium hover:from-blue-600 hover:to-green-600 transition-all duration-200 shadow-md hover:shadow-lg"
             >
               Daftar
-            </a>
+            </Link>
           </div>
 
           {/* Mobile menu button */}
@@ -112,49 +113,49 @@ export default function Navbar() {
         {isMenuOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t border-gray-200">
-              <a
+              <Link
                 href="/"
                 className="block px-3 py-2 text-gray-700 hover:text-blue-600 font-medium transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Beranda
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/warehouses"
                 className="block px-3 py-2 text-gray-700 hover:text-blue-600 font-medium transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Cari Gudang
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/about"
                 className="block px-3 py-2 text-gray-700 hover:text-blue-600 font-medium transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Tentang Kami
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/contact"
                 className="block px-3 py-2 text-gray-700 hover:text-blue-600 font-medium transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Kontak
-              </a>
+              </Link>
               <div className="border-t border-gray-200 pt-3 mt-3">
-                <a
+                <Link
                   href="/login"
                   className="block px-3 py-2 text-gray-700 hover:text-blue-600 font-medium transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Masuk
-                </a>
-                <a
+                </Link>
+                <Link
                   href="/register"
                   className="block px-3 py-2 bg-linear-to-r from-blue-500 to-green-500 text-white rounded-lg font-medium hover:from-blue-600 hover:to-green-600 transition-all duration-200 mx-3 mt-2 text-center"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Daftar
-                </a>
+                </Link>
               </div>
             </div>
           </div>

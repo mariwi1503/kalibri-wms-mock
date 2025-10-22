@@ -1,5 +1,6 @@
 import React from 'react';
 import { Warehouse, Construction, ArrowLeft } from 'lucide-react';
+import Link from 'next/link';
 
 // Komponen ini mengikuti tema warna gradien biru-hijau dan gaya
 // kartu yang sama dengan LoginPage, menggunakan bahasa Indonesia.
@@ -13,12 +14,12 @@ export default function UnderDevelopmentPage() {
         
         {/* Header/Logo, menggunakan gradien yang sama */}
         <div className="flex flex-col items-center justify-center mb-8">
-          <a href="/" className="inline-flex items-center space-x-3">
+          <Link href="/" className="inline-flex items-center space-x-3">
             <div className="w-14 h-14 bg-linear-to-br from-blue-500 to-green-500 rounded-xl flex items-center justify-center shadow-lg">
               <Warehouse className="w-8 h-8 text-white" />
             </div>
             <span className="text-3xl font-extrabold text-gray-900">WarehouseRent</span>
-          </a>
+          </Link>
         </div>
 
         {/* Konten Utama: Pesan Under Development */}
@@ -43,13 +44,13 @@ export default function UnderDevelopmentPage() {
 
         {/* Tombol Kembali ke Beranda dengan gaya gradien utama */}
         <div className="pt-6">
-          <a
+          <Link
             href="/"
             className="inline-flex items-center justify-center space-x-2 bg-linear-to-r from-blue-500 to-green-500 text-white py-3 px-6 rounded-xl font-semibold hover:from-blue-600 hover:to-green-600 transition-all duration-300 shadow-lg shadow-blue-200/50 hover:shadow-blue-300/70 focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50"
           >
             <ArrowLeft className="w-5 h-5" />
             <span>Kembali ke Home</span>
-          </a>
+          </Link>
         </div>
 
       </div>

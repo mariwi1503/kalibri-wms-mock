@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Eye, EyeOff, LogIn, Warehouse, User, Crown } from 'lucide-react';
 import { demoUsers } from '@/constant/users';
+import Link from 'next/link';
 
 interface LoginFormValues {
   email: string;
@@ -60,12 +61,12 @@ export default function LoginPage() {
       <div className="max-w-md w-full space-y-8">
         {/* Header */}
         <div className="text-center">
-          <a href="/" className="inline-flex items-center space-x-3 mb-8">
+          <Link href="/" className="inline-flex items-center space-x-3 mb-8">
             <div className="w-12 h-12 bg-linear-to-br from-blue-500 to-green-500 rounded-xl flex items-center justify-center">
               <Warehouse className="w-7 h-7 text-white" />
             </div>
             <span className="text-2xl font-bold text-gray-900">WarehouseRent</span>
-          </a>
+          </Link>
           
           <h2 className="text-3xl font-bold text-gray-900 mb-2">
             Masuk ke Akun Anda
@@ -181,9 +182,9 @@ export default function LoginPage() {
                 </label>
               </div>
 
-              <a href="/forgot-password" className="text-sm text-blue-600 hover:text-blue-500">
+              <Link href="/forgot-password" className="text-sm text-blue-600 hover:text-blue-500">
                 Lupa password?
-              </a>
+              </Link>
             </div>
 
             <button
@@ -205,21 +206,22 @@ export default function LoginPage() {
           <div className="mt-6 text-center">
             <p className="text-sm text-gray-600">
               Belum punya akun?{' '}
-              <a href="/register" className="text-blue-600 hover:text-blue-500 font-medium">
+              {/* <Link href="/register" className="text-blue-600 hover:text-blue-500 font-medium">
                 Daftar sekarang
-              </a>
+              </Link> */}
+              <Link href="/register">Daftar sekarang</Link>
             </p>
           </div>
         </div>
 
         {/* Back to Home */}
         <div className="text-center">
-          <a
+          <Link
             href="/"
             className="text-sm text-gray-600 hover:text-gray-900 transition-colors"
           >
             ← Kembali ke Beranda
-          </a>
+          </Link>
         </div>
       </div>
     </div>

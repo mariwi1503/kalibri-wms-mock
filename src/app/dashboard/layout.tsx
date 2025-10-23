@@ -346,10 +346,11 @@ const Sidebar = ({ menuItems, isOpen, setIsOpen, currentPath }: SidebarProps) =>
                     className="w-full h-full object-cover" 
                 />
               </div>
-              <div className="flex flex-col font-bold text-blue-600 leading-tight">
+              {/* <div className="flex flex-col font-bold text-gray-900 leading-tight">
                 <p className="text-2xl tracking-widest">KALIBRI</p>
                 <p className="text-lg tracking-widest">Warehouse</p>
-              </div>
+              </div> */}
+              <p className="text-2xl font-bold text-gray-900">KALIBRI</p>
             </div>
             <button
               className="p-2 lg:hidden text-gray-600 hover:text-blue-600 transition-colors"

@@ -1,10 +1,11 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { Eye, EyeOff, LogIn, Warehouse, User, Crown } from 'lucide-react';
-import { demoUsers } from '@/constant/users';
-import Link from 'next/link';
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { Eye, EyeOff, LogIn, Warehouse, User, Crown } from "lucide-react";
+import { demoUsers } from "@/constant/users";
+import Link from "next/link";
+import Image from "next/image";
 
 interface LoginFormValues {
   email: string;
@@ -14,19 +15,24 @@ interface LoginFormValues {
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState('');
-  
-  const { register, handleSubmit, setValue, formState: { errors } } = useForm<LoginFormValues>();
+  const [error, setError] = useState("");
+
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm<LoginFormValues>();
 
   const onSubmit = async (data: any) => {
     setIsLoading(true);
-    setError('');
+    setError("");
 
     try {
-      const response = await fetch('/api/auth/login', {
-        method: 'POST',
+      const response = await fetch("/api/auth/login", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
       });
@@ -35,25 +41,25 @@ export default function LoginPage() {
 
       if (response.ok) {
         // Store user data in localStorage
-        localStorage.setItem('user', JSON.stringify(result.user));
-        
+        localStorage.setItem("user", JSON.stringify(result.user));
+
         // Redirect to dashboard
-        window.location.href = '/dashboard';
+        window.location.href = "/dashboard";
       } else {
-        setError(result.error || 'Login gagal');
+        setError(result.error || "Login gagal");
       }
     } catch (error) {
-      console.error('Login error:', error);
-      setError('Terjadi kesalahan saat login');
+      console.error("Login error:", error);
+      setError("Terjadi kesalahan saat login");
     } finally {
       setIsLoading(false);
     }
   };
 
   const quickLogin = (email: string, userType: string) => {
-    setValue('email', email);
-    setValue('password', 'demo123');
-    setError('');
+    setValue("email", email);
+    setValue("password", "demo123");
+    setError("");
   };
 
   return (
@@ -62,12 +68,20 @@ export default function LoginPage() {
         {/* Header */}
         <div className="text-center">
           <Link href="/" className="inline-flex items-center space-x-3 mb-8">
-            <div className="w-12 h-12 bg-linear-to-br from-blue-500 to-green-500 rounded-xl flex items-center justify-center">
-              <Warehouse className="w-7 h-7 text-white" />
+            <div className="w-12 h-12 rounded-xl flex items-center justify-center">
+              {/* <Warehouse className="w-7 h-7 text-white" /> */}
+              <Image
+                src="/logo.png" // path gambar (dari folder public)
+                alt="Gudang Logistik"
+                width={500}
+                height={500}
+              />
             </div>
-            <span className="text-2xl font-bold text-gray-900">WarehouseRent</span>
+            <span className="text-2xl font-bold text-gray-900">
+              Kalibri Warehouse
+            </span>
           </Link>
-          
+
           <h2 className="text-3xl font-bold text-gray-900 mb-2">
             Masuk ke Akun Anda
           </h2>
@@ -86,40 +100,48 @@ export default function LoginPage() {
             )}
 
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-700 mb-2"
+              >
                 Email
               </label>
               <input
-                {...register('email', {
-                  required: 'Email wajib diisi',
+                {...register("email", {
+                  required: "Email wajib diisi",
                   pattern: {
                     value: /\S+@\S+\.\S+/,
-                    message: 'Format email tidak valid'
-                  }
+                    message: "Format email tidak valid",
+                  },
                 })}
                 type="email"
                 className="text-gray-500 w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
                 placeholder="Masukkan email Anda"
               />
               {errors.email?.message && (
-                <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
+                <p className="mt-1 text-sm text-red-600">
+                  {errors.email.message}
+                </p>
               )}
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
+              <label
+                htmlFor="password"
+                className="block text-sm font-medium text-gray-700 mb-2"
+              >
                 Password
               </label>
               <div className="relative">
                 <input
-                  {...register('password', {
-                    required: 'Password wajib diisi',
+                  {...register("password", {
+                    required: "Password wajib diisi",
                     minLength: {
                       value: 6,
-                      message: 'Password minimal 6 karakter'
-                    }
+                      message: "Password minimal 6 karakter",
+                    },
                   })}
-                  type={showPassword ? 'text' : 'password'}
+                  type={showPassword ? "text" : "password"}
                   className="text-gray-500 w-full px-4 py-3 pr-12 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
                   placeholder="Masukkan password Anda"
                 />
@@ -128,11 +150,17 @@ export default function LoginPage() {
                   onClick={() => setShowPassword(!showPassword)}
                   className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
                 >
-                  {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                  {showPassword ? (
+                    <EyeOff className="w-5 h-5" />
+                  ) : (
+                    <Eye className="w-5 h-5" />
+                  )}
                 </button>
               </div>
               {errors.password?.message && (
-                <p className="mt-1 text-sm text-red-600">{errors.password.message}</p>
+                <p className="mt-1 text-sm text-red-600">
+                  {errors.password.message}
+                </p>
               )}
             </div>
 
@@ -144,12 +172,18 @@ export default function LoginPage() {
                   type="checkbox"
                   className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
                 />
-                <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-700">
+                <label
+                  htmlFor="remember-me"
+                  className="ml-2 block text-sm text-gray-700"
+                >
                   Ingat saya
                 </label>
               </div>
 
-              <Link href="/forgot-password" className="text-sm text-blue-600 hover:text-blue-500">
+              <Link
+                href="/forgot-password"
+                className="text-sm text-blue-600 hover:text-blue-500"
+              >
                 Lupa password?
               </Link>
             </div>
@@ -172,7 +206,7 @@ export default function LoginPage() {
 
           <div className="mt-6 text-center">
             <p className="text-sm text-gray-600">
-              Belum punya akun?{' '}
+              Belum punya akun?{" "}
               {/* <Link href="/register" className="text-blue-600 hover:text-blue-500 font-medium">
                 Daftar sekarang
               </Link> */}
@@ -194,7 +228,9 @@ export default function LoginPage() {
                 className="p-3 rounded-xl border-2 border-gray-200 hover:border-blue-300 hover:bg-blue-50 transition-all duration-200 text-left group"
               >
                 <div className="flex items-center space-x-3">
-                  <div className={`w-10 h-10 bg-linear-to-br ${user.color} rounded-lg flex items-center justify-center`}>
+                  <div
+                    className={`w-10 h-10 bg-linear-to-br ${user.color} rounded-lg flex items-center justify-center`}
+                  >
                     <user.icon className="w-5 h-5 text-white" />
                   </div>
                   <div className="flex-1 min-w-0">
@@ -202,7 +238,7 @@ export default function LoginPage() {
                       {user.name}
                     </p>
                     <p className="text-xs text-gray-500 capitalize">
-                      {user.type === 'admin' ? 'Pemilik' : 'Penyewa'}
+                      {user.type === "admin" ? "Pemilik" : "Penyewa"}
                     </p>
                   </div>
                 </div>
